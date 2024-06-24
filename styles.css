@@ -38,7 +38,8 @@
   text-align: right;
 }
 
-.posts {
+.posts,
+.user-posts {
   display: flex;
   flex-direction: column;
   list-style: none;
@@ -52,6 +53,10 @@
   align-items: center;
   margin-bottom: 10px;
   cursor: pointer;
+}
+
+.posts-user-header {
+  justify-content: center;
 }
 
 .post-header__user-image {
@@ -82,6 +87,55 @@
   display: flex;
   flex-direction: row;
   align-items: center;
+  gap: 5px;
+}
+
+.delete-button {
+  width: 30px;
+  height: 30px;
+  border: none;
+  cursor: pointer;
+  background: url('./assets/images/delete-btn.svg') no-repeat center
+      transparent;
+}
+
+.-hide-del-btn {
+  display: none;
+}
+
+.delete-button:hover {
+  animation: jello-horizontal 0.9s both;
+}
+
+@keyframes jello-horizontal {
+  0% {
+      -webkit-transform: scale3d(1, 1, 1);
+      transform: scale3d(1, 1, 1);
+  }
+  30% {
+      -webkit-transform: scale3d(1.25, 0.75, 1);
+      transform: scale3d(1.25, 0.75, 1);
+  }
+  40% {
+      -webkit-transform: scale3d(0.75, 1.25, 1);
+      transform: scale3d(0.75, 1.25, 1);
+  }
+  50% {
+      -webkit-transform: scale3d(1.15, 0.85, 1);
+      transform: scale3d(1.15, 0.85, 1);
+  }
+  65% {
+      -webkit-transform: scale3d(0.95, 1.05, 1);
+      transform: scale3d(0.95, 1.05, 1);
+  }
+  75% {
+      -webkit-transform: scale3d(1.05, 0.95, 1);
+      transform: scale3d(1.05, 0.95, 1);
+  }
+  100% {
+      -webkit-transform: scale3d(1, 1, 1);
+      transform: scale3d(1, 1, 1);
+  }
 }
 
 .like-button {
@@ -91,6 +145,45 @@
   padding-left: 0px;
   padding-bottom: 5px;
   cursor: pointer;
+}
+
+.like-button:hover {
+  animation: heartbeat 1.5s ease-in-out infinite both;
+}
+
+@keyframes heartbeat {
+  from {
+      -webkit-transform: scale(1);
+      transform: scale(1);
+      -webkit-transform-origin: center center;
+      transform-origin: center center;
+      -webkit-animation-timing-function: ease-out;
+      animation-timing-function: ease-out;
+  }
+  10% {
+      -webkit-transform: scale(0.91);
+      transform: scale(0.91);
+      -webkit-animation-timing-function: ease-in;
+      animation-timing-function: ease-in;
+  }
+  17% {
+      -webkit-transform: scale(0.98);
+      transform: scale(0.98);
+      -webkit-animation-timing-function: ease-out;
+      animation-timing-function: ease-out;
+  }
+  33% {
+      -webkit-transform: scale(0.87);
+      transform: scale(0.87);
+      -webkit-animation-timing-function: ease-in;
+      animation-timing-function: ease-in;
+  }
+  45% {
+      -webkit-transform: scale(1);
+      transform: scale(1);
+      -webkit-animation-timing-function: ease-out;
+      animation-timing-function: ease-out;
+  }
 }
 
 .user-name {
@@ -176,7 +269,7 @@
   text-align: center;
 }
 
-.file-upload-image-conrainer {
+.file-upload-image-container {
   display: flex;
   align-items: center;
 }
