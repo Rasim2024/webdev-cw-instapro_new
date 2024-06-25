@@ -1,6 +1,6 @@
 import { renderHeaderComponent } from './header-component'
 import { renderUploadImageComponent } from './upload-image-component'
-// import sanitizeHtml from 'sanitize-html'
+import sanitizeHtml from 'sanitize-html'
 
 export function renderAddPostPageComponent({ appEl, onAddPostClick }) {
     let imageUrl = ''
@@ -68,7 +68,7 @@ export function renderAddPostPageComponent({ appEl, onAddPostClick }) {
                 }
 
                  onAddPostClick({
-                    description: (addPostDesc, { allowedTags: [] }),
+                    description: sanitizeHtml(addPostDesc, { allowedTags: [] }),
                     imageUrl: imageUrl,
                 });
             } catch (error) {

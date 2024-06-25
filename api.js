@@ -1,10 +1,11 @@
 // Замени на свой, чтобы получить независимый от других набор данных.
 // "боевая" версия инстапро лежит в ключе prod
-const personalKey = "prod";
+const personalKey = "rasim-musaev";
 const baseHost = "https://webdev-hw-api.vercel.app";
 const postsHost = `${baseHost}/api/v1/${personalKey}/instapro`;
 
 export function  getPosts({ token }) {
+    console.log('Проверка');
   return fetch(postsHost, {
       method: 'GET',
       headers: {
@@ -147,16 +148,15 @@ export function registerUser({ login, password, name, imageUrl }) {
           imageUrl,
       }),
   }).then(response => {
-      if (response.status === 200) {
-          return response.json();
-        }
+               
+        
       if (response.status === 400) {
           throw new Error('Такой пользователь уже существует')
       }
       if (response.status === 500) {
           throw new Error("ошибка сервера");
         }
-        return Promise.reject( new Error ("Отсутствует соединение"));
+        return response.json();
       })
       .catch((error) => {
           alert(error);
@@ -172,7 +172,7 @@ export function loginUser({ login, password }) {
           password,
       }),
   }).then(response => {
-      if (response.status === 200) {
+      if (response.status === 201) {
           return response.json();
         }
       if (response.status === 400) {
